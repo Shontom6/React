@@ -19,6 +19,7 @@ export default class App extends Component {
         <br />
         <input type={"text"} onBlur={this.inputFieldHandler} />
         <br />
+        <button>click</button>
         <FuncCompSample
           propValue={this.state.inputTextValue}
           propValue2={"Hello World"}
