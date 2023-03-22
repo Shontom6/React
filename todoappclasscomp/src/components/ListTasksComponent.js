@@ -8,6 +8,11 @@ export default class ListTasksComponent extends Component {
       completed: event.target.checked,
     });
   };
+
+  handleDeleteButtonClick = (taskName) => {
+    console.log("value received in handleDeleteButtonClick",taskName);
+    this.props.sendTaskDeletedValueFromChild(taskName);
+  };
   render() {
     return (
       <div>
@@ -22,7 +27,7 @@ export default class ListTasksComponent extends Component {
                   }}
                 />
                 {task.taskName} &nbsp;&nbsp;&nbsp;
-                <button>Delete</button>
+                <button onClick={() => {this.handleDeleteButtonClick(task.taskName)}}>Delete</button>
               </li>
             );
           })}

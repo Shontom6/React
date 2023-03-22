@@ -37,6 +37,17 @@ class ParentComponent extends Component {
     console.log("New task list is ", newTaskList);
     this.setState({ taskList: newTaskList });
   };
+
+  receiveTaskDeletedValueFromChild = (taskName) => {
+    console.log("Received in parent as", taskName);
+    let newTaskList = [];
+    this.state.taskList.forEach((task) => {
+      if (taskName !== task.taskName) {
+        newTaskList.push(task);
+      }
+    })
+    this.setState({taskList:newTaskList});
+  };
   render() {
     return (
       <div className="parent-wrapper">
@@ -45,6 +56,9 @@ class ParentComponent extends Component {
           listOfTasks={this.state.taskList}
           sendTaskCompletedValueFromChild={
             this.receiveTaskCompletedValueFromChild
+          }
+          sendTaskDeletedValueFromChild={
+            this.receiveTaskDeletedValueFromChild
           }
         />
       </div>
